@@ -19,6 +19,8 @@ current_dir = Path(__file__).parent
 app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
           "static")), name="static")
 
+from fastapi import Request
+
 # In-memory activity database
 activities = {
     "Chess Club": {
@@ -74,8 +76,21 @@ activities = {
         "schedule": "Fridays, 4:00 PM - 5:30 PM",
         "max_participants": 12,
         "participants": ["charlotte@mergington.edu", "henry@mergington.edu"]
+
     }
 }
+
+# --- MCP Integration Example ---
+@app.get("/mcp/context")
+async def get_mcp_context(request: Request):
+    """Return a sample MCP context payload for integration demo."""
+    return {
+        "mcp_version": "1.0",
+        "source": str(request.base_url),
+        "user": "demo-student@mergington.edu",
+        "activities": list(activities.keys()),
+        "note": "This is a sample MCP context payload for Copilot integration."
+    }
 
 
 @app.get("/")

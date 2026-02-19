@@ -1,5 +1,17 @@
 # Integrate MCP with Copilot
+## MCP Integration Example
 
+This project demonstrates how to expand GitHub Copilot's capabilities with Model Context Protocol (MCP).
+
+### MCP Context Endpoint
+
+An example endpoint is available at:
+
+```
+GET /mcp/context
+```
+
+This returns a sample MCP context payload for integration and experimentation.
 <img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
 
 Hey dmhg2025!
